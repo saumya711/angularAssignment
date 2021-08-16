@@ -1,0 +1,43 @@
+<div class="form-froup row">
+
+    <label class="col-sm-2 col-form-label">Category</label>
+    <div class="col-sm-10">
+        <select class="form-control" [(ngModel)]="ProductCategory">
+            <option>--Select--</option>
+            <option *ngFor="let cateName of CategoryList">
+                {{cateName.CategoryName}}
+            </option>
+        </select>
+    </div>
+    <label class="col-sm-2 col-form-label">Product Name</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="ProductName"
+        placeholder="Enter Product Name">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="ProductDescription"
+        placeholder="Enter Product Description">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Price</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="ProductPrice"
+        placeholder="Enter Price">
+    </div>
+
+    <label class="col-sm-2 col-form-label">Quantity</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="ProductQuantity"
+        placeholder="Enter number of Available items ">
+    </div>
+</div>
+
+<button (click)="addProduct()" *ngIf="prdt.ProductId==0" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateProduct()" *ngIf="prdt.ProductId!=0" class="btn btn-primary">
+    Update
+</button>

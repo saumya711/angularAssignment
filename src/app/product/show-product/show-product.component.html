@@ -1,0 +1,64 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-right m-2" 
+data-toggle="modal" data-target="#exampleModal"
+(click)="addClick()"
+data-backdrop="static" data-keyboard="false">
+    Add New Product
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          
+        </div>
+        <div class="modal-body">
+            <app-add-edit-product [prdt]="prdt" *ngIf="ActivateAddEditProductComp">
+            </app-add-edit-product>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"
+            style="margin-left: 10px;  margin-top: 5px"
+          (click)="closeClick()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price Rs:</th>
+            <th>Quantity</th>
+            <th>Option</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of ProductList">
+            <td>{{dataItem.ProductCategory}}</td>
+            <td>{{dataItem.ProductName}}</td>
+            <td>{{dataItem.ProductDescription}}</td>
+            <td>{{dataItem.ProductPrice}}</td>
+            <td>{{dataItem.ProductQuantity}}</td>
+            <td>
+                <button type="button" class="btn btn-light mr-1"
+                data-toggle="modal" data-target="#exampleModal"
+                (click)="editClick(dataItem)"
+                data-backdrop="static" data-keyboard="false">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-light mr-1" 
+                (click)="deleteClick(dataItem)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
